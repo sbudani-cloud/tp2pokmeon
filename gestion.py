@@ -1,0 +1,1 @@
+equipo = [None, None, None, None, None, None]
