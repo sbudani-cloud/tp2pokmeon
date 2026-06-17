@@ -1,0 +1,75 @@
+[
+    {"id": 1,
+    "nombre": "Bulbasaur",
+    "tipo": "Planta",
+    "pc": 318},
+
+    {"id": 4,
+    "nombre": "Charmander",
+    "tipo": "Fuego",
+    "pc": 309},
+
+    {"id": 7,
+    "nombre": "Squirtle",
+    "tipo": "Agua",
+    "pc": 314},
+
+    {"id": 25,
+    "nombre": "Pikachu",
+    "tipo": "Eléctrico",
+    "pc": 320},
+    {"id": 39,
+    "nombre": "Jigglypuff",
+    "tipo": "Normal",
+    "pc": 270},
+
+    {"id": 52,
+    "nombre": "Meowth",
+    "tipo": "Normal",
+    "pc": 290},
+
+    {"id": 54,
+    "nombre": "Psyduck",
+    "tipo": "Agua",
+    "pc": 320},
+
+    {"id": 63,
+    "nombre": "Abra",
+    "tipo": "Psíquico",
+    "pc": 310},
+
+    {"id": 66,
+    "nombre": "Machop",
+    "tipo": "Lucha",
+    "pc": 305},
+
+    {"id": 74,
+    "nombre": "Geodude",
+    "tipo": "Roca",
+    "pc": 300},
+
+    {"id": 81,
+    "nombre": "Magnemite",
+    "tipo": "Eléctrico",
+    "pc": 325},
+
+    {"id": 92,
+    "nombre": "Gastly",
+    "tipo": "Fantasma",
+    "pc": 310},
+
+    {"id": 95,
+    "nombre": "Onix",
+    "tipo": "Roca",
+    "pc": 385},
+
+    {"id": 133,
+    "nombre": "Eevee",
+    "tipo": "Normal",
+    "pc": 325},
+    
+    {"id": 143,
+    "nombre": "Snorlax",
+    "tipo": "Normal",
+    "pc": 540}
+]
