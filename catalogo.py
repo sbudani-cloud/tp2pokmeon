@@ -125,15 +125,11 @@ def cargar_pokedex(ruta_archivo, pokedex):
         )
 
         pokedex.agregar(pokemon.id, pokemon)
-Pokedex = HashMap()
-cargar_pokedex("pokedex.json", Pokedex)
 
-medallasObtenidas = []
 def cargar_medallas(ruta_archivo):
+    medallasObtenidas = []
     with open(ruta_archivo, "r", encoding="utf-8") as file:
         datos = json.load(file)
 
     medallasObtenidas.append(datos[0])
     medallasObtenidas.append(datos[1])
-cargar_medallas("medallas.json")
-print(medallasObtenidas)
