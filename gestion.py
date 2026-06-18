@@ -5,7 +5,7 @@ class Nodo:
         self.dato = dato
         self.siguiente = None
         self.anterior = None
-class SinglyLinkedList:
+class ListaEnlazada:
     def __init__(self):
         self.head = None
 
@@ -68,3 +68,53 @@ class SinglyLinkedList:
                     )
                 siguiente = siguiente.siguiente
             actual = actual.siguiente
+
+PC = ListaEnlazada() #mochila
+
+class Queue:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def enqueue(self, dato):
+        nuevo = Nodo(dato)
+        if self.head is None:
+            self.head = nuevo
+            self.tail = nuevo
+            return
+        self.tail.siguiente = nuevo
+        self.tail = nuevo
+
+    def dequeue(self):
+        if self.head is None:
+            return None
+        dato = self.head.dato
+        self.head = self.head.siguiente
+        if self.head is None:
+            self.tail = None
+        return dato
+
+CentroPokemon = Queue()
+
+class Stack:
+    def __init__(self):
+        self.lista = ListaEnlazada()
+
+    def push(self, dato):
+        nuevo = Nodo(dato)
+        nuevo.siguiente = self.lista.head
+        self.lista.head = nuevo
+
+    def pop(self):
+        if self.lista.head is None:
+            return None
+        dato = self.lista.head.dato
+        self.lista.head = self.lista.head.siguiente
+        return dato
+
+    def peek(self):
+        if self.lista.head:
+            return self.lista.head.dato
+        return None
+
+Transferidos = Stack()
