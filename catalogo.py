@@ -1,4 +1,4 @@
-import json
+import json, random
 
 #clases
 class Pokemon:
@@ -51,6 +51,18 @@ class HashMap:
                 return v
 
         return None
+
+    def elegir_random(self):
+        pokemones = []
+
+        for bucket in self.buckets:
+            for key, pokemon in bucket:
+                pokemones.append(pokemon)
+        if not pokemones:
+            return None
+
+        return random.choice(pokemones)
+    
 
     def modificar(self, key, nuevo_valor):
         indice = self._hash(key)
