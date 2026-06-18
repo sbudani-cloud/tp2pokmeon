@@ -1,4 +1,4 @@
-equipo = [None, None, None, None, None, None]
+equipo = []
 
 class Nodo:
     def __init__(self, dato):
@@ -118,3 +118,14 @@ class Stack:
         return None
 
 Transferidos = Stack()
+
+lideres_gimnasio = {
+    "Limon Agrio": "Medalla Limoncito",
+    "Dulce Princesa": "Medalla Chicle",
+    "Marceline": "Medalla Vampira",
+    "Jake": "Medalla Perro",
+    "Finn": "Medalla Humano",
+    "Princesa Grumosa": "Medalla Grumos",
+    "Rey Helado": "Medalla Hielo",
+    "Prismo": "Medalla Prismatica"
+}

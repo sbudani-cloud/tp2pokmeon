@@ -1,12 +1,11 @@
 from catalogo import cargar_medallas, cargar_pokedex, HashMap
+from gestion import equipo, PC, CentroPokemon, Transferidos
 import random
 
 Pokedex = HashMap()
 
 cargar_pokedex("pokedex.json", Pokedex)
 cargar_medallas("medallas.json")
-
-
 
 def menucito():
     seguir = True
@@ -22,6 +21,7 @@ def menucito():
         print("9- Deshacer última transferencia")
         print("10- Desafiar Líder de Gimnasio")
         print("11- Salir del sistema\n")
+        
         selec = input("Seleccione una opción: ")
         if selec == "1":
             ver_pokedex()
@@ -63,9 +63,18 @@ def capturar_pok():
     captura = random.getrandbits(1)
     if captura == 1:
         print("¡Captura exitosa!")
-        #seguir
+        print(f"Equipo Principal: {len(equipo)}/6")
+        if len(equipo) < 6:
+            print("Pokemon añadido al equipo!")
+            equipo.append(pok)
+        else:
+            print("Está lleno. Derivando a almacenamiento de PC...")
+            PC.agregar(pok)
+            print("Registro añadido exitosamente.")
+        input()
     else:
-        print("nooooo")
+        print("Captura fallida...")
+        input()
 
 def ordenar_pc():
     pass
@@ -74,9 +83,6 @@ def buscar_pok():
     pass
 
 def enviar_centropokemon():
-    pass
-
-def capturar_pok():
     pass
 
 def transferir_oak():
