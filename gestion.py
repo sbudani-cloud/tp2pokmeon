@@ -54,20 +54,43 @@ class ListaEnlazada:
             actual = actual.siguiente
         return contador
 
-    def ordenar(self):
-        if self.head is None:
-            return
+    def orden_alfabetico(self):
+        lista = []
         actual = self.head
         while actual:
-            siguiente = actual.siguiente
-            while siguiente:
-                if actual.dato > siguiente.dato:
-                    actual.dato, siguiente.dato = (
-                        siguiente.dato,
-                        actual.dato
-                    )
-                siguiente = siguiente.siguiente
+            lista.append(actual.dato)
             actual = actual.siguiente
+        #bubble sort
+        for i in range(len(lista)-1):
+            for j in range(len(lista)-i-1):
+                if lista[j].nombre.lower() > lista[j+1].nombre.lower():
+                    lista[j], lista[j+1] = lista[j+1], lista[j]
+        
+        self.head = None
+        for e in lista:
+            self.agregar(e)
+    
+    def orden_tipo(self):
+        lista = []
+        actual = self.head
+        while actual:
+            lista.append(actual.dato)
+            actual = actual.siguiente
+        #insertion sort
+        for i in range(1,len(lista)):
+            insert_index = i
+            current_value = lista.pop(i)
+            for j in range(i-1, -1, -1):
+                if lista[j].tipo > current_value.tipo:
+                    insert_index = j
+            lista.insert(insert_index, current_value)
+        
+        self.head = None
+        for e in lista:
+            self.agregar(e)
+    
+    def orden_competitivo(self):
+        pass
 
 PC = ListaEnlazada() #mochila
 

@@ -7,6 +7,12 @@ class Pokemon:
         self.nombre = nombre
         self.tipo = tipo
         self.poder_combate = pc
+    
+    def __str__(self):
+        return f"{self.nombre} / {self.tipo} / {self.poder_combate}" #cambiar a que se vea mas lindo
+    
+    def __repr__(self):
+        return f"{self.nombre}"
 
 class HashMap:
     def __init__(self):
@@ -123,7 +129,7 @@ class HashSet:
         self.agregar(key_nueva)
         print(f"Elemento '{key_vieja}' modificado a '{key_nueva}'.")
 
-#---cargar
+#____cargar__
 def cargar_pokedex(ruta_archivo, pokedex):
     with open(ruta_archivo, "r", encoding="utf-8") as file:
         datos = json.load(file)

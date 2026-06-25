@@ -1,6 +1,6 @@
 from catalogo import cargar_medallas, cargar_pokedex, HashMap
 from gestion import equipo, PC, CentroPokemon, Transferidos
-import random
+import random, os
 
 Pokedex = HashMap()
 
@@ -10,52 +10,73 @@ cargar_medallas("medallas.json")
 def menucito():
     seguir = True
     while seguir:
+        os.system("cls")
         print("1 -Ver Pokédex")
         print("2- Ver Equipo Principal")
         print("3- Ver PC")
-        print("4- Capturar nuevo Pokémon")
-        print("5- Ordenar PC (Submenú: Alfabético, Por Tipo, Por PC)")
-        print("6- Buscar Pokémon en Equipo")
-        print("7- Enviar Pokémon al Centro Pokémon")
-        print("8- Transferir Pokémon al Profesor Oak")
-        print("9- Deshacer última transferencia")
-        print("10- Desafiar Líder de Gimnasio")
-        print("11- Salir del sistema\n")
+        print("4- Ver Medallas")
+        print("5- Capturar nuevo Pokémon")
+        print("6- Ordenar PC (Submenú: Alfabético, Por Tipo, Por PC)")
+        print("7- Buscar Pokémon en Equipo")
+        print("8- Enviar Pokémon al Centro Pokémon")
+        print("9- Transferir Pokémon al Profesor Oak")
+        print("10- Deshacer última transferencia")
+        print("11- Desafiar Líder de Gimnasio")
+        print("12- Salir del sistema\n")
         
         selec = input("Seleccione una opción: ")
         if selec == "1":
+            os.system("cls")
             ver_pokedex()
         elif selec == "2":
+            os.system("cls")
             ver_equipo()
         elif selec == "3":
+            os.system("cls")
             ver_pc()
         elif selec == "4":
-            capturar_pok()
+            os.system("cls")
+            ver_medallas()
         elif selec == "5":
-            ordenar_pc()
+            os.system("cls")
+            capturar_pok()
         elif selec == "6":
-            buscar_pok()
+            os.system("cls")
+            ordenar_pc()
         elif selec == "7":
-            enviar_centropokemon()
+            os.system("cls")
+            buscar_pok()
         elif selec == "8":
-            transferir_oak()
+            os.system("cls")
+            enviar_centropokemon()
         elif selec == "9":
-            deshacer_transf()
+            os.system("cls")
+            transferir_oak()
         elif selec == "10":
-            desafiar_lider()
+            os.system("cls")
+            deshacer_transf()
         elif selec == "11":
+            os.system("cls")
+            desafiar_lider()
+        elif selec == "12":
             seguir = False
         else:
-            print("naquever")
+            os.system("cls")
+            print("Opción no válida.")
+            input("\nPresione Enter para volver al menu.")
 
 def ver_pokedex():
     pass
 
 def ver_equipo():
-    pass
+    print("\033[1mEquipo:\033[0m") #negritas
+    for e in equipo:
+        print(e)
+    input("\nPresione Enter para volver al menu.")
 
 def ver_pc():
-    pass
+    PC.recorrer()
+    input("\nPresione Enter para volver al menu.")
 
 def capturar_pok():
     pok = Pokedex.elegir_random()
@@ -65,20 +86,34 @@ def capturar_pok():
         print("¡Captura exitosa!")
         print(f"Equipo Principal: {len(equipo)}/6")
         if len(equipo) < 6:
-            print("Pokemon añadido al equipo!")
             equipo.append(pok)
+            print(f"¡Pokemon añadido al equipo! ({len(equipo)}/6)")
         else:
             print("Está lleno. Derivando a almacenamiento de PC...")
             PC.agregar(pok)
             print("Registro añadido exitosamente.")
-        input()
     else:
         print("Captura fallida...")
-        input()
+    input("\nPresione Enter para volver al menu.")
 
 def ordenar_pc():
-    pass
-
+    print("1- Ordenar alfabeticamente")
+    print("2- Ordenar por tipo")
+    print("3- Ordenar por poder de combate")
+    
+    selec = input ("Seleccione una opción: ")
+    
+    if selec == "1":
+        PC.orden_alfabetico()
+        print("Se ordenó la PC. Seleccione 'Ver PC' en el menu para ver los cambios.")
+    elif selec == "2":
+        PC.orden_tipo()
+        print("Se ordenó la PC. Seleccione 'Ver PC' en el menu para ver los cambios.")
+    elif selec == "3":
+        pass #poder combate
+    else:
+        print("Opción no válida.")
+    input("\nPresione Enter para volver al menu.")
 def buscar_pok():
     pass
 
@@ -92,6 +127,9 @@ def deshacer_transf():
     pass
 
 def desafiar_lider():
+    pass
+
+def ver_medallas():
     pass
 
 menucito()
