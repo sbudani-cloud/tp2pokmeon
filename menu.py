@@ -69,7 +69,40 @@ def menucito():
             input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def ver_pokedex():
-    pass
+    for e in Pokedex.buckets:
+        for key, pokemon in e:
+            print(f"{key} - {pokemon}")
+    selec = input("¿Querés buscar un pokemon en específico? (y/n): ")
+    if selec.lower() == "y":
+        pok = input("Ingrese el ID: ")
+        resultado = busq_pokedex(pok)
+        if resultado != -1:
+            print("si esta jasd") #ACÁ
+        else:
+            print("no eesta") #ACÁ
+    elif selec.lower() == "n":
+        ("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
+    else:
+        print("Opción no válida. ₍^. .^₎Ⳋ")
+        input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
+
+def busq_pokedex(pok):
+    lista = []
+    for e in Pokedex.buckets:
+        for key, pokemon in e:
+            lista.append(key)
+    left = 0
+    right = len(lista) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if lista[mid] == pok:
+            return mid
+        if lista[mid] < pok:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+    input()
 
 def ver_equipo():
     print("\033[1mEquipo:\033[0m ₍₍⚞(˶>ᗜ<˶)⚟⁾⁾") #negritas \033[1m \033[0m
@@ -84,7 +117,7 @@ def ver_pc():
 
 def capturar_pok():
     pok = Pokedex.elegir_random()
-    print(f"Ha aparecido un {pok.nombre} salvaje (PC: {pok.poder_combate}). (˶ˆᗜˆ˵).ᐟ")
+    print(f"Ha aparecido un {pok.nombre} salvaje (PC: {pok.poder_combate}). (˶ˆᗜˆ˵).ᐟ\n")
     captura = random.getrandbits(1)
     if captura == 1:
         print(". ݁₊ ⊹ . ݁˖ . ݁ ¡Captura exitosa! . ݁₊ ⊹ . ݁˖ . ݁")
@@ -119,8 +152,16 @@ def ordenar_pc():
     else:
         print("Opción no válida. ₍^. .^₎Ⳋ")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
-def buscar_pok():
-    pass
+
+def buscar_pok(): #falta decorar
+    pok = input("Ingrese el nombre de un pokemon: ")
+    for e in equipo:
+        if e.nombre.lower() == pok.lower():
+            print("El pokemon se encuentra en el equipo.")
+            input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
+            return
+    print("El pokemon no se encuentra en el equipo.")
+    input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def enviar_centropokemon():
     pass
