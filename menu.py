@@ -16,7 +16,7 @@ def menucito():
         print("3- Ver PC")
         print("4- Ver Medallas")
         print("5- Capturar nuevo Pokémon")
-        print("6- Ordenar PC (Submenú: Alfabético, Por Tipo, Por PC)")
+        print("6- Ordenar PC")
         print("7- Buscar Pokémon en Equipo")
         print("8- Enviar Pokémon al Centro Pokémon")
         print("9- Transferir Pokémon al Profesor Oak")
@@ -75,6 +75,7 @@ def ver_equipo():
     input("\nPresione Enter para volver al menu.")
 
 def ver_pc():
+    print("\033[1mPC:\033[0m")
     PC.recorrer()
     input("\nPresione Enter para volver al menu.")
 
@@ -110,7 +111,8 @@ def ordenar_pc():
         PC.orden_tipo()
         print("Se ordenó la PC. Seleccione 'Ver PC' en el menu para ver los cambios.")
     elif selec == "3":
-        pass #poder combate
+        PC.orden_competitivo()
+        print("Se ordenó la PC. Seleccione 'Ver PC' en el menu para ver los cambios.")
     else:
         print("Opción no válida.")
     input("\nPresione Enter para volver al menu.")

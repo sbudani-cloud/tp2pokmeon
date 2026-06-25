@@ -90,7 +90,38 @@ class ListaEnlazada:
             self.agregar(e)
     
     def orden_competitivo(self):
-        pass
+        lista = []
+        actual = self.head
+        while actual:
+            lista.append(actual.dato)
+            actual = actual.siguiente
+        
+        self.quicksort(lista)
+        lista.reverse()
+        
+        self.head = None
+        for e in lista:
+            self.agregar(e)
+    
+    def quicksort(self, lista, low=0, high=None):
+        if high is None:
+            high = len(lista) - 1
+        if low < high:
+            pivot_index = self.partition(lista, low, high)
+            self.quicksort(lista, low, pivot_index - 1)
+            self.quicksort(lista, pivot_index + 1, high)
+        
+    def partition(self, lista, low, high):
+        pivot = lista[high].poder_combate
+        i = low - 1
+        
+        for j in range(low, high):
+            if lista[j].poder_combate <= pivot:
+                i += 1
+                lista[i], lista[j] = lista[j], lista[i]
+        
+        lista[i + 1], lista[high] = lista[high], lista[i + 1]
+        return i + 1
 
 PC = ListaEnlazada() #mochila
 
