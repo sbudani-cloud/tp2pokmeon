@@ -1,15 +1,18 @@
-from catalogo import cargar_pokedex, HashMap, lideres_gimnasio, medallasObtenidas
+from catalogo import cargar_pokedex, cargar_medallas, HashMap, medallasObtenidas
 from gestion import equipo, PC, centroPokemon, transferidos
 import random, os, time
 import colores as c
 
-# AAAAAAA agregar algunos emojis en la deco
-# ah y pasar cositas al main
+lideres_gimnasio = None
+Pokedex = None
 
+def cargar():
+    global Pokedex, lideres_gimnasio
+    Pokedex = HashMap()
 
-Pokedex = HashMap()
+    cargar_pokedex("pokedex.json", Pokedex)
 
-cargar_pokedex("pokedex.json", Pokedex)
+    lideres_gimnasio = cargar_medallas("medallas.json")
 
 def menucito():
     seguir = True
@@ -94,6 +97,7 @@ def ver_pokedex():
     elif selec.lower() == "n":
         pass
     else:
+        os.system('cls')
         print(f"{c.rosita}Opción no válida. {c.rosa}₍^. .^₎Ⳋ{c.reset}")
     input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
 
@@ -294,5 +298,3 @@ def ver_medallas():
         if i not in medallasObtenidas:
             print(f"    {c.rosita}{i}")
     input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
-
-menucito()
