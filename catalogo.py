@@ -144,8 +144,8 @@ def cargar_pokedex(ruta_archivo, pokedex):
 
         pokedex.agregar(pokemon.id, pokemon)
 
+medallasObtenidas = []
 def cargar_medallas(ruta_archivo):
-    medallasObtenidas = []
     with open(ruta_archivo, "r", encoding="utf-8") as file:
         datos = json.load(file)
 
@@ -154,18 +154,16 @@ def cargar_medallas(ruta_archivo):
 
     return datos
 
-def lideres():
-    datos = cargar_medallas("medallas.json")
 
-    lideres_gimnasio = {
-        "Limon Agrio": datos[0],
-        "Dulce Princesa": datos[1],
-        "Marceline": datos[2],
-        "Jake": datos[3],
-        "Finn": datos[4],
-        "Princesa Grumosa": datos[5],
-        "Rey Helado": datos[6],
-        "Prismo": datos[7]
-    }
-    
-    return lideres_gimnasio
+datos = cargar_medallas("medallas.json")
+
+lideres_gimnasio = {
+    "Limon Agrio": datos[0],
+    "Dulce Princesa": datos[1],
+    "Marceline": datos[2],
+    "Jake": datos[3],
+    "Finn": datos[4],
+    "Princesa Grumosa": datos[5],
+    "Rey Helado": datos[6],
+    "Prismo": datos[7]
+}

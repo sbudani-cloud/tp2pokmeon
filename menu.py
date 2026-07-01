@@ -1,4 +1,4 @@
-from catalogo import cargar_medallas, cargar_pokedex, HashMap
+from catalogo import cargar_pokedex, HashMap, lideres_gimnasio, medallasObtenidas
 from gestion import equipo, PC, centroPokemon, transferidos
 import random, os, time
 
@@ -240,10 +240,19 @@ def deshacer_transf():
         print(f"{pok.nombre} ha vuelto a la PC. 𐔌՞ ܸ.ˬ.ܸ՞𐦯")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
-def desafiar_lider():
-    pass
+def desafiar_lider(): #si equipo vacio = no podes
+    for e, i in lideres_gimnasio.items():
+        print(f"Líder {e} ----- {i}") #aca
+    input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
-def ver_medallas():
-    pass
+def ver_medallas(): #decorar
+    print("Medallas Obtenidas:")
+    for e in medallasObtenidas:
+        print(e)
+    print("\nMedallas No Obtenidas:")
+    for _, i in lideres_gimnasio.items():
+        if i not in medallasObtenidas:
+            print(i)
+    input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 menucito()
