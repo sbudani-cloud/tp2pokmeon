@@ -1,11 +1,13 @@
 from catalogo import cargar_medallas, cargar_pokedex, HashMap
 from gestion import equipo, PC, CentroPokemon, Transferidos
-import random, os
+import random, os, time
+
+# AAAAAAA agregar algunos emojis en la deco
+
 
 Pokedex = HashMap()
 
 cargar_pokedex("pokedex.json", Pokedex)
-cargar_medallas("medallas.json")
 
 def menucito():
     seguir = True
@@ -72,19 +74,24 @@ def ver_pokedex():
     for e in Pokedex.buckets:
         for key, pokemon in e:
             print(f"{key} - {pokemon}")
-    selec = input("¿Querés buscar un pokemon en específico? (y/n): ")
+    selec = input("\nʚɞ ⁺˖ ⸝⸝ ¿Querés buscar un pokemon en específico? (y/n): ")
     if selec.lower() == "y":
-        pok = input("Ingrese el ID: ")
+        try:
+            pok = int(input("\n ׅ 𝄂𝄚𝅦𝄚𝄞𝅄 Ingrese el ID: "))
+        except ValueError:
+            print("\nEl ID debe ser un número. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
+            return
         resultado = busq_pokedex(pok)
         if resultado != -1:
-            print("si esta jasd") #ACÁ
+            pokemoncito = Pokedex.buscar(pok)
+            print(f"\n¡El pokemon sí se encuentra en la Pokedex! ‧₊˚♪ 𝄞₊˚⊹ Es {pokemoncito.nombre}. ♬⋆.˚") #quiero q su nmbre este en color. dps agrego colores
         else:
-            print("no eesta") #ACÁ
+            print("\nEl pokemon no se encuentra en la Pokedex. (˶˃ ᵕ ˂˶) ᵎ!ᵎ")
     elif selec.lower() == "n":
-        ("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
+        pass
     else:
         print("Opción no válida. ₍^. .^₎Ⳋ")
-        input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
+    input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def busq_pokedex(pok):
     lista = []
@@ -105,13 +112,16 @@ def busq_pokedex(pok):
     input()
 
 def ver_equipo():
-    print("\033[1mEquipo:\033[0m ₍₍⚞(˶>ᗜ<˶)⚟⁾⁾") #negritas \033[1m \033[0m
-    for e in equipo:
-        print(e)
+    if len(equipo) == 0:
+        print("No tienes pokemons en tu equipo todavía. ૮◞ ‸ ◟ ა")
+    else:
+        print("\033[1mEquipo:\033[0m ₍₍⚞(˶>ᗜ<˶)⚟⁾⁾\n") #negritas \033[1m \033[0m
+        for e in equipo:
+            print(e)
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def ver_pc():
-    print("\033[1mPC:\033[0m (˶ᵔᗜᵔ˶)ﾉﾞ")
+    print("\033[1mPC:\033[0m (˶ᵔᗜᵔ˶)ﾉﾞ\n")
     PC.recorrer()
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
@@ -154,20 +164,49 @@ def ordenar_pc():
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def buscar_pok(): #falta decorar
-    pok = input("Ingrese el nombre de un pokemon: ")
+    pok = input("✧˖°. Ingrese el nombre de un pokemon: ")
     for e in equipo:
         if e.nombre.lower() == pok.lower():
-            print("El pokemon se encuentra en el equipo.")
+            print("El pokemon se encuentra en el equipo. ૮ ྀིᴗ͈ . ᴗ͈ ྀིა")
             input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
             return
-    print("El pokemon no se encuentra en el equipo.")
+    print("El pokemon no se encuentra en el equipo. ૮꒰◞ ˕ ◟ ྀི꒱ა")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def enviar_centropokemon():
-    pass
+    print("𝄞⨾💿✮˚.⋆ Ingresando equipo a la cola...\n")
+    for pok in equipo:
+        CentroPokemon.enqueue(pok)
+    
+    while CentroPokemon.head is not None:
+        pok = CentroPokemon.dequeue()
+        print(f"⋆౨ৎ˚⟡˖ ࣪ {pok.nombre} se está curando", end="", flush=True)
+        for _ in range(3):
+            time.sleep(0.5)
+            print(".", end="", flush=True)
+        print("")
+        time.sleep(1)
+    print("\n¡Todos los pokemons fueron curados! ⸜(｡˃ ᵕ ˂ )⸝♡")
+    input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def transferir_oak():
-    pass
+    temp = []
+    actual = PC.head
+    i = 1
+    while actual:
+        print(f"{i} - {actual.dato.nombre}")
+        temp.append(actual.dato)
+        actual = actual.siguiente
+        i += 1
+    selec = int(input("\n꒰ྀི১ ໒꒱ིྀ ¿Qué pokemon querés transferir?: "))
+    os.system("cls")
+    PC.eliminar(temp[selec-1])
+    print(f"Transfiriendo {temp[selec-1].nombre} al Profesor Oak... ˚ ༘ ೀ⋆｡˚")
+    if Transferidos.cantidad < 5:
+        Transferidos.push(temp[selec-1])
+    time.sleep(1)
+    print("¡Pokemon transferido con éxito! ༉‧₊˚.")
+    input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def deshacer_transf():
     pass

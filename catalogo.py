@@ -151,3 +151,21 @@ def cargar_medallas(ruta_archivo):
 
     medallasObtenidas.append(datos[0])
     medallasObtenidas.append(datos[1])
+
+    return datos
+
+def lideres():
+    datos = cargar_medallas("medallas.json")
+
+    lideres_gimnasio = {
+        "Limon Agrio": datos[0],
+        "Dulce Princesa": datos[1],
+        "Marceline": datos[2],
+        "Jake": datos[3],
+        "Finn": datos[4],
+        "Princesa Grumosa": datos[5],
+        "Rey Helado": datos[6],
+        "Prismo": datos[7]
+    }
+    
+    return lideres_gimnasio
