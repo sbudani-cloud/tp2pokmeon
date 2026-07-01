@@ -202,7 +202,11 @@ def transferir_oak():
     os.system("cls")
     PC.eliminar(temp[selec-1])
     print(f"Transfiriendo {temp[selec-1].nombre} al Profesor Oak... ˚ ༘ ೀ⋆｡˚")
-    if Transferidos.cantidad < 5:
+    if Transferidos.size() < 5:
+        Transferidos.push(temp[selec-1])
+    else:
+        #sacar lo de abajo de todo del stack
+        
         Transferidos.push(temp[selec-1])
     time.sleep(1)
     print("¡Pokemon transferido con éxito! ༉‧₊˚.")

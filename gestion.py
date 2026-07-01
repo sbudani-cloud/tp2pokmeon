@@ -171,7 +171,7 @@ class Stack:
             return self.lista.head.dato
         return None
 
-    def cantidad(self):
+    def size(self):
         cont = 0
         while self.lista.head:
             cont =+ 1
