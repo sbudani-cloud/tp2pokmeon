@@ -256,7 +256,7 @@ def desafiar_lider(): #decorar Y PONER COLORES EN LOS PRINTS DE LIDERES Y MEDALL
         except (IndexError, ValueError):
             print("Opción no válida. ₍^. .^₎Ⳋ")
         else:
-            print(f"Estás a punto de pelear contra {lider} por la {med}.")
+            print(f"Estás a punto de pelear contra {lider} por la {med}. ₍₍⚞(˶>ᗜ<˶)⚟⁾⁾")
             
             for _ in range(3):
                 time.sleep(0.5)
@@ -265,14 +265,16 @@ def desafiar_lider(): #decorar Y PONER COLORES EN LOS PRINTS DE LIDERES Y MEDALL
             
             victoria = random.getrandbits(1)
             if victoria == 1: #mejorar textos
-                print ("Ganaste la pelea!")
+                print ("₊⊹ ¡Ganaste la pelea! ٩(ˊᗜˋ*)و ♡")
                 if med in medallasObtenidas:
-                    print("Ya tenes la medalla, asi q na")
+                    print(f". ݁₊ ⊹ . ݁ Parece que ya tienes está medalla.")
+                    print(f"¡Felicidades por derrotar a {lider} una vez más! ₍ᐢ. .ᐢ₎ ₊˚⊹♡")
                 else:
-                    print("Aaca tenes la medalla por tu esfuerzo")
+                    print(f"♡⸝⸝ Obtuviste la {med}, ¡Felicidades! ₍₍⚞(˶>ᗜ<˶)⚟⁾⁾")
                     medallasObtenidas.append(med)
             else:
-                print("Perdiste la pelea...")
+                print("༄.° Perdiste la pelea... ( ˶°ㅁ°) !!")
+                print("Mejor suerte la próxima") #decorar
     
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
