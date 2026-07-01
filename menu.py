@@ -240,19 +240,50 @@ def deshacer_transf():
         print(f"{pok.nombre} ha vuelto a la PC. 𐔌՞ ܸ.ˬ.ܸ՞𐦯")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
-def desafiar_lider(): #si equipo vacio = no podes
-    for e, i in lideres_gimnasio.items():
-        print(f"Líder {e} ----- {i}") #aca
+def desafiar_lider(): #decorar Y PONER COLORES EN LOS PRINTS DE LIDERES Y MEDALLAS.
+    if len(equipo) < 1:
+        print("¡Debes tener un equipo para desafiar a un líder! (˶ˆᗜˆ˵)!!")
+    else:
+        cont = 1
+        for e, i in lideres_gimnasio.items():
+            print(f"{cont}- Líder {e} ({i})") #aca
+            cont += 1
+        
+        try:
+            selec = int(input("¿Contra qué líder querés pelear?: "))
+            ls_lideres = list(lideres_gimnasio.items())
+            lider, med = ls_lideres[selec-1]
+        except (IndexError, ValueError):
+            print("Opción no válida. ₍^. .^₎Ⳋ")
+        else:
+            print(f"Estás a punto de pelear contra {lider} por la {med}.")
+            
+            for _ in range(3):
+                time.sleep(0.5)
+                print(".", end="", flush=True)
+            print("")
+            
+            victoria = random.getrandbits(1)
+            if victoria == 1: #mejorar textos
+                print ("Ganaste la pelea!")
+                if med in medallasObtenidas:
+                    print("Ya tenes la medalla, asi q na")
+                else:
+                    print("Aaca tenes la medalla por tu esfuerzo")
+                    medallasObtenidas.append(med)
+            else:
+                print("Perdiste la pelea...")
+    
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
-def ver_medallas(): #decorar
-    print("Medallas Obtenidas:")
+def ver_medallas():
+    print(">⩊< \033[1mMedallas Obtenidas:\033[0m (๑ᵔ⤙ᵔ๑)")
     for e in medallasObtenidas:
-        print(e)
-    print("\nMedallas No Obtenidas:")
+        print(f"    {e}")
+    print("\n>⩊< \033[1mMedallas No Obtenidas:\033[0m (,,>_<,,)")
     for _, i in lideres_gimnasio.items():
         if i not in medallasObtenidas:
-            print(i)
+            print(f"    {i}")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 menucito()
