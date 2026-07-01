@@ -1,6 +1,7 @@
 from catalogo import cargar_pokedex, HashMap, lideres_gimnasio, medallasObtenidas
 from gestion import equipo, PC, centroPokemon, transferidos
 import random, os, time
+import colores as c
 
 # AAAAAAA agregar algunos emojis en la deco
 # solo falta lo q dice arriba y lo de los lideres y medallas siiiiiii
@@ -15,21 +16,21 @@ def menucito():
     seguir = True
     while seguir:
         os.system("cls")
-        print("⋆˙⟡♡ ๋࣭ ⭑ \033[1m¡Pokemon Huergo!\033[0m ໒꒰ྀིっ˕ -｡꒱ྀི১ ₊˚⊹♡ \n")
-        print("⏔⏔⏔⏔⏔⏔⏔⏔⏔⏔ ꒰ ᧔ෆ݁݁᧓ ꒱⏔⏔⏔⏔⏔⏔⏔⏔⏔⏔")
-        print("1 -Ver Pokédex")
-        print("2- Ver Equipo Principal")
-        print("3- Ver PC")
-        print("4- Ver Medallas")
-        print("5- Capturar nuevo Pokémon")
-        print("6- Ordenar PC")
-        print("7- Buscar Pokémon en Equipo")
-        print("8- Enviar Pokémon al Centro Pokémon")
-        print("9- Transferir Pokémon al Profesor Oak")
-        print("10- Deshacer última transferencia")
-        print("11- Desafiar Líder de Gimnasio")
-        print("12- Salir del sistema")
-        print("───────────────୨ৎ───────────────\n")
+        print(f"{c.rosa}⋆˙⟡♡ ๋࣭ ⭑ {c.bold}¡Pokemon Huergo!{c.reset}{c.rosa} ໒꒰ྀིっ˕ -｡꒱ྀི১ ₊˚⊹♡{c.reset} \n")
+        print(f"{c.rosita}⏔⏔⏔⏔⏔⏔⏔⏔⏔⏔ ꒰ ᧔ෆ݁݁᧓ ꒱⏔⏔⏔⏔⏔⏔⏔⏔⏔⏔{c.reset}")
+        print(f"{c.rosota}1-{c.reset} Ver Pokédex")
+        print(f"{c.rosota}2-{c.reset} Ver Equipo Principal")
+        print(f"{c.rosota}3-{c.reset} Ver PC")
+        print(f"{c.rosota}4-{c.reset} Ver Medallas")
+        print(f"{c.rosota}5-{c.reset} Capturar nuevo Pokémon")
+        print(f"{c.rosota}6-{c.reset} Ordenar PC")
+        print(f"{c.rosota}7-{c.reset} Buscar Pokémon en Equipo")
+        print(f"{c.rosota}8-{c.reset} Enviar Pokémon al Centro Pokémon")
+        print(f"{c.rosota}9-{c.reset} Transferir Pokémon al Profesor Oak")
+        print(f"{c.rosota}10-{c.reset} Deshacer última transferencia")
+        print(f"{c.rosota}11-{c.reset} Desafiar Líder de Gimnasio")
+        print(f"{c.rosota}12-{c.reset} Salir del sistema")
+        print(f"{c.rosita}───────────────୨ৎ───────────────{c.reset}\n")
         
         selec = input("݁ ˖Ი𐑼⋆ Seleccione una opción ݁ ˖Ი𐑼⋆ ")
         if selec == "1":
@@ -86,7 +87,7 @@ def ver_pokedex():
         resultado = busq_pokedex(pok)
         if resultado != -1:
             pokemoncito = Pokedex.buscar(pok)
-            print(f"\n¡El pokemon sí se encuentra en la Pokedex! ‧₊˚♪ 𝄞₊˚⊹ Es {pokemoncito.nombre}. ♬⋆.˚") #quiero q su nmbre este en color. dps agrego colores
+            print(f"\n¡El pokemon sí se encuentra en la Pokedex! ‧₊˚♪ 𝄞₊˚⊹ Es {pokemoncito.nombre}. ♬⋆.˚") #quiero q su nmbre este en color. dps agrego c
         else:
             print("\nEl pokemon no se encuentra en la Pokedex. (˶˃ ᵕ ˂˶) ᵎ!ᵎ")
     elif selec.lower() == "n":
@@ -123,8 +124,11 @@ def ver_equipo():
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def ver_pc():
-    print("\033[1mPC:\033[0m (˶ᵔᗜᵔ˶)ﾉﾞ\n")
-    PC.recorrer()
+    if PC.tamaño() > 0:
+        print("\033[1mPC:\033[0m (˶ᵔᗜᵔ˶)ﾉﾞ\n")
+        PC.recorrer()
+    else:
+        print("No tienes pokemons en tu PC todavía. ૮◞ ‸ ◟ ა")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def capturar_pok():
@@ -240,7 +244,7 @@ def deshacer_transf():
         print(f"{pok.nombre} ha vuelto a la PC. 𐔌՞ ܸ.ˬ.ܸ՞𐦯")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
-def desafiar_lider(): #decorar Y PONER COLORES EN LOS PRINTS DE LIDERES Y MEDALLAS.
+def desafiar_lider(): #decorar Y PONER c EN LOS PRINTS DE LIDERES Y MEDALLAS.
     if len(equipo) < 1:
         print("¡Debes tener un equipo para desafiar a un líder! (˶ˆᗜˆ˵)!!")
     else:
