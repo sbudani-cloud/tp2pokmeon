@@ -148,7 +148,7 @@ class Queue:
             self.tail = None
         return dato
 
-CentroPokemon = Queue()
+centroPokemon = Queue()
 
 class Stack:
     def __init__(self):
@@ -173,8 +173,10 @@ class Stack:
 
     def size(self):
         cont = 0
-        while self.lista.head:
-            cont =+ 1
+        actual = self.lista.head
+        while actual:
+            actual = actual.siguiente
+            cont += 1
         return cont
 
-Transferidos = Stack()
+transferidos = Stack()

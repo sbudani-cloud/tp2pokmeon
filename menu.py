@@ -1,8 +1,10 @@
 from catalogo import cargar_medallas, cargar_pokedex, HashMap
-from gestion import equipo, PC, CentroPokemon, Transferidos
+from gestion import equipo, PC, centroPokemon, transferidos
 import random, os, time
 
 # AAAAAAA agregar algunos emojis en la deco
+# solo falta lo q dice arriba y lo de los lideres y medallas siiiiiii
+# ah y pasar cositas al main
 
 
 Pokedex = HashMap()
@@ -176,10 +178,10 @@ def buscar_pok(): #falta decorar
 def enviar_centropokemon():
     print("𝄞⨾💿✮˚.⋆ Ingresando equipo a la cola...\n")
     for pok in equipo:
-        CentroPokemon.enqueue(pok)
+        centroPokemon.enqueue(pok)
     
-    while CentroPokemon.head is not None:
-        pok = CentroPokemon.dequeue()
+    while centroPokemon.head is not None:
+        pok = centroPokemon.dequeue()
         print(f"⋆౨ৎ˚⟡˖ ࣪ {pok.nombre} se está curando", end="", flush=True)
         for _ in range(3):
             time.sleep(0.5)
@@ -198,22 +200,45 @@ def transferir_oak():
         temp.append(actual.dato)
         actual = actual.siguiente
         i += 1
-    selec = int(input("\n꒰ྀི১ ໒꒱ིྀ ¿Qué pokemon querés transferir?: "))
-    os.system("cls")
-    PC.eliminar(temp[selec-1])
-    print(f"Transfiriendo {temp[selec-1].nombre} al Profesor Oak... ˚ ༘ ೀ⋆｡˚")
-    if Transferidos.size() < 5:
-        Transferidos.push(temp[selec-1])
+    if PC.tamaño() == 0:
+        print("⊹ ࣪ ˖ No tenes pokemons para transferir. (,,>_<,,)")
     else:
-        #sacar lo de abajo de todo del stack
-        
-        Transferidos.push(temp[selec-1])
-    time.sleep(1)
-    print("¡Pokemon transferido con éxito! ༉‧₊˚.")
+        try:
+            selec = int(input("\n꒰ྀི১ ໒꒱ིྀ ¿Qué pokemon querés transferir?: "))
+        except ValueError:
+            print("\nDebe ingresar un número. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
+            input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
+            return
+        if selec > 0 and selec < i:
+            os.system("cls")
+            PC.eliminar(temp[selec-1])
+            print(f"Transfiriendo {temp[selec-1].nombre} al Profesor Oak... ˚ ༘ ೀ⋆｡˚")
+            
+            if transferidos.size() < 5:
+                transferidos.push(temp[selec-1])
+            else:
+                actual = transferidos.lista.head
+                while actual.siguiente.siguiente:
+                    actual = actual.siguiente
+                actual.siguiente = None
+                
+                transferidos.push(temp[selec-1])
+            
+            time.sleep(0.5)
+            print("¡Pokemon transferido con éxito! ༉‧₊˚.")
+        else:
+            print("Opción no válida. ₍^. .^₎Ⳋ")
     input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def deshacer_transf():
-    pass
+    if transferidos.size() < 1:
+        print("No hay pokemons que recuperar. (˶˃𐃷˂˶)")
+    else:
+        print("⋆｡‧˚ʚ ୨ৎ Recuperando último pokemon...")
+        pok = transferidos.pop()
+        PC.agregar(pok)
+        print(f"{pok.nombre} ha vuelto a la PC. 𐔌՞ ܸ.ˬ.ܸ՞𐦯")
+    input("\n𓏵‧₊˚ ┊ Presione Enter para volver al menu.")
 
 def desafiar_lider():
     pass

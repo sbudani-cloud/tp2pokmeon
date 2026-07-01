@@ -9,7 +9,7 @@ class Pokemon:
         self.poder_combate = pc
     
     def __str__(self):
-        return f"{self.nombre} / {self.tipo} / {self.poder_combate}" #cambiar a que se vea mas lindo
+        return f"{self.nombre} ⋮⁠♡⋮ {self.tipo} ⋮⁠♡⋮ {self.poder_combate}" #cambiar a que se vea mas lindo
     
     def __repr__(self):
         return f"{self.nombre}"
