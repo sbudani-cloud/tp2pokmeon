@@ -1,3 +1,6 @@
+♡ Módulo 6: Análisis de Complejidad ♡
+──────────────────୨ৎ──────────────────
+
 a)
 Al agregar un pokemon al equipo (array) con append, la complejidad temporal es de O(1), ya 
 que no se recorre la estructura, solo se agrega un elemento al final. Esto se ve en el 
@@ -8,6 +11,8 @@ lineas 17 a la 20, que se recorre la lista enlazada. Eso es en el caso de que la
 tenga una head, sino, se entra en el if de las lineas 14 a la 16, y ahi la complejidad es de 
 O(1).
 
+꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋
+
 b)
 Se utilizó un HashMap porque su complejidad temporal en promedio es O(1), que es mucho mejor 
 que una lista de python. El HashMap utiliza la función hash para que la key, que es el ID 
@@ -17,9 +22,22 @@ Para esto, tiene que haber la misma cantidad de buckets que de entradas, porque 
 buckets que entradas es un gasto de memoria, y que hayan menos es un gasto de tiempo.
 Si la Pokedex fuera, en cambio, una lista de python, se debería recorrer la lista elemento por 
 elemento hasta encontrarlo. En el peor caso, habría que recorrer toda la lista, que tendría una 
-complejidad de O(n). Aunque O(n) también es la complejidad temporal del peor caso de un HashMap, para que 
-ese peor caso pase tienen que estar todos los elementos en un mismo bucket, y el que se busca 
-debe estar al final de este. Este caso, creo yo, sería mucho más raro que llegue a pasar, y en 
-promedio la complejidad temporal del HashMap es mucho mejor.
+complejidad de O(n). Aunque O(n) también es la complejidad temporal del peor caso de un HashMap, 
+para que ese peor caso pase tienen que estar todos los elementos en un mismo bucket, y el que se 
+busca debe estar al final de este. Este caso, creo yo, sería mucho más raro que llegue a pasar, 
+y en promedio la complejidad temporal del HashMap es mucho mejor.
+
+꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋ ࣭ ⭑꒷꒦꒷꒦︶꒷꒦︶ ๋
 
 c)
+La complejidad temporal de Bubble Sort es O(n²) en promedio y en peor caso, y O(n) en su mejor 
+caso. La complejidad temporal de Quick Sort en su peor caso es O(nO(n log n)), pero O(n log n) 
+en promedio, siendo mejor que el Bubble Sort.
+Esto significa que realiza aproximadamente 36 millones de operaciones en su caso promedio y en 
+su peor caso, ya que O(6000²) = O(36000000). Por esto, es muy poco eficiente, sobretodo en 
+listas tan grandes.
+En cambio, el Quick Sort solo en su peor caso sería O(6000²) = O(36000000), mientras que en 
+promedio sería O(n log n) = O(75300), siendo una reducción de operaciones inmensa, ya que una 
+es 75 mil y otra es 36 millones (en promedio).
+Por esto, Quick sort es mucho mejor, ya que, aunque en su peor caso los dos son iguales, en 
+un caso promedio las diferencias son gigantes.
