@@ -31,7 +31,8 @@ def menucito():
         print(f"{c.rosa}9-{c.reset} Transferir Pokémon al Profesor Oak")
         print(f"{c.rosa}10-{c.reset} Deshacer última transferencia")
         print(f"{c.rosa}11-{c.reset} Desafiar Líder de Gimnasio")
-        print(f"{c.rosa}12-{c.reset} Salir del sistema")
+        print(f"{c.rosa}12-{c.reset} Cambiar el Equipo")
+        print(f"{c.rosa}13-{c.reset} Salir del sistema")
         print(f"{c.rosita}───────────────୨ৎ───────────────{c.reset}\n")
 
         selec = input(f"{c.rosita}݁ ˖Ი𐑼⋆{c.reset} Seleccione una opción {c.rosita}݁ ˖Ი𐑼⋆  {c.reset}")
@@ -69,6 +70,9 @@ def menucito():
             os.system("cls")
             desafiar_lider()
         elif selec == "12":
+            os.system("cls")
+            cambiar_equipo()
+        elif selec == "13":
             seguir = False
         else:
             os.system("cls")
@@ -84,9 +88,9 @@ def ver_pokedex():
     print(c.reset)
     if selec.lower() == "y":
         try:
-            pok = int(input(" ׅ 𝄂𝄚𝅦𝄚𝄞𝅄 Ingrese el ID: "))
+            pok = int(input(f"{c.rosita} ׅ 𝄂𝄚𝅦𝄚𝄞𝅄{c.reset} Ingrese el ID: "))
         except ValueError:
-            print("El ID debe ser un número. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
+            print(f"El ID debe ser un {c.rosa}número{c.reset}. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
             return
         resultado = busq_pokedex(pok)
         if resultado != -1:
@@ -121,7 +125,7 @@ def busq_pokedex(pok):
 
 def ver_equipo():
     if len(equipo) == 0:
-        print("No tienes pokemons en tu equipo todavía. ૮◞ ‸ ◟ ა")
+        print(f"No tienes pokemons en tu {c.rosita}equipo{c.reset} todavía. ૮◞ ‸ ◟ ა")
     else:
         print(f"{c.bold}{c.rosa}Equipo:{c.reset} ₍₍⚞(˶>ᗜ<˶)⚟⁾⁾\n")
         for e in equipo:
@@ -133,7 +137,7 @@ def ver_pc():
         print(f"{c.bold}{c.rosa}PC:{c.reset} (˶ᵔᗜᵔ˶)ﾉﾞ\n")
         PC.recorrer()
     else:
-        print("No tienes pokemons en tu PC todavía. ૮◞ ‸ ◟ ა")
+        print(f"No tienes pokemons en tu {c.rosita}PC{c.reset} todavía. ૮◞ ‸ ◟ ა")
     input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
 
 def capturar_pok():
@@ -301,4 +305,49 @@ def ver_medallas():
     for _, i in lideres_gimnasio.items():
         if i not in medallasObtenidas:
             print(f"    {c.rosita}{i}")
+    input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
+
+def cambiar_equipo(): #decorar
+    if len(equipo) < 1 or PC.tamaño() < 1:
+        print(f"No tienes pokemons en tu {c.rosita}equipo{c.reset} o {c.rosita}PC{c.reset} todavía. ૮◞ ‸ ◟ ა")
+    else:
+        print(f"{c.bold}{c.rosa}Equipo:{c.reset} ₍₍⚞(˶>ᗜ<˶)⚟⁾⁾\n")
+        cont = 1
+        for e in equipo:
+            print(f"{c.rosa}{cont}-{c.reset} {e.nombre}")
+            cont += 1
+        try:
+            selec = int(input("\n¿A qué pokemon querés cambiar?: ")) 
+        except ValueError:
+            print(f"{c.rosita}Opción no válida. {c.rosa}₍^. .^₎Ⳋ{c.reset}")
+            input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
+            return
+        if selec > 0 and selec <= len(equipo):
+            sacar = selec-1
+            
+            os.system("cls")
+            temp = []
+            actual = PC.head
+            i = 1
+            while actual:
+                print(f"{c.rosa}{i}-{c.reset} {actual.dato.nombre}")
+                temp.append(actual.dato)
+                actual = actual.siguiente
+                i += 1
+            try:
+                selec_pc = int(input("\n¿A qué pokemon querés poner en tu equipo?"))
+            except ValueError:
+                print(f"{c.rosita}Opción no válida. {c.rosa}₍^. .^₎Ⳋ{c.reset}")
+                input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
+                return
+            if selec_pc > 0 and selec_pc <= PC.tamaño():
+                PC.agregar(equipo[sacar])
+                equipo.pop(sacar)
+                equipo.append(temp[selec_pc-1])
+                PC.eliminar(temp[selec_pc-1])
+                print("¡Cambio realizado con éxito!")
+            else:
+                print(f"¡Elección fuera de {c.rosa}rango{c.reset}!. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
+        else:
+            print(f"¡Elección fuera de {c.rosa}rango{c.reset}!. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
     input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
