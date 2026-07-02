@@ -1,0 +1,25 @@
+a)
+Al agregar un pokemon al equipo (array) con append, la complejidad temporal es de O(1), ya 
+que no se recorre la estructura, solo se agrega un elemento al final. Esto se ve en el 
+código en 'menu.py' en la linea 147, adentro de la funcion 'capturar_pok()'.
+En cambio, en la PC (lista enlazada), la complejidad es de O(n), ya que se tiene que 
+se recorren los nodos para llegar al final y agregarlo. Se puede ver en 'gestion.py', en las 
+lineas 17 a la 20, que se recorre la lista enlazada. Eso es en el caso de que la lista ya 
+tenga una head, sino, se entra en el if de las lineas 14 a la 16, y ahi la complejidad es de 
+O(1).
+
+b)
+Se utilizó un HashMap porque su complejidad temporal en promedio es O(1), que es mucho mejor 
+que una lista de python. El HashMap utiliza la función hash para que la key, que es el ID 
+del pokemon, pase a ser un índice, para saber en qué bucket meterlo. Así, se puede acceder 
+directamente al bucket en el que esté el elemento sin pasar por todo el HashMap para buscarlo.
+Para esto, tiene que haber la misma cantidad de buckets que de entradas, porque que hayan más 
+buckets que entradas es un gasto de memoria, y que hayan menos es un gasto de tiempo.
+Si la Pokedex fuera, en cambio, una lista de python, se debería recorrer la lista elemento por 
+elemento hasta encontrarlo. En el peor caso, habría que recorrer toda la lista, que tendría una 
+complejidad de O(n). Aunque O(n) también es la complejidad temporal del peor caso de un HashMap, para que 
+ese peor caso pase tienen que estar todos los elementos en un mismo bucket, y el que se busca 
+debe estar al final de este. Este caso, creo yo, sería mucho más raro que llegue a pasar, y en 
+promedio la complejidad temporal del HashMap es mucho mejor.
+
+c)
