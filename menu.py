@@ -177,14 +177,18 @@ def ordenar_pc():
         print(f"{c.rosita}No{c.reset} hay pokemons en la {c.rosa}PC{c.reset} todavía... “(ノ _ <,, )")
     input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
 
-def buscar_pok(): #falta decorar
-    pok = input(f"✧˖°. Ingrese el {c.rosa}nombre{c.reset} de un {c.rosita}pokemon{c.reset}: ")
-    for e in equipo:
-        if e.nombre.lower() == pok.lower():
-            print(f"El pokemon {c.rosita}sí{c.reset} se encuentra en el equipo. ૮ ྀིᴗ͈ . ᴗ͈ ྀིა")
-            input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
-            return
-    print(f"El pokemon {c.rosita}no{c.reset} se encuentra en el equipo. ૮꒰◞ ˕ ◟ ྀི꒱ა")
+def buscar_pok():
+    if len(equipo) > 0:
+        pok = input(f"✧˖°. Ingrese el {c.rosa}nombre{c.reset} de un {c.rosita}pokemon{c.reset}: ")
+        for e in equipo:
+            if e.nombre.lower() == pok.lower():
+                print(f"El pokemon {c.rosita}sí{c.reset} se encuentra en el equipo. ૮ ྀིᴗ͈ . ᴗ͈ ྀིა")
+                print(f"⋆ ˚｡⋆{c.rosita}୨୧{c.reset}˚ ¡Es un pokemon {c.rosita}tipo {c.rosa}{e.tipo}{c.reset} y su {c.rosita}poder de combate{c.reset} es {c.rosa}{e.poder_combate}{c.reset}! ٩(^ᗜ^ )و ´-")
+                input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
+                return
+        print(f"El pokemon {c.rosita}no{c.reset} se encuentra en el equipo. ૮꒰◞ ˕ ◟ ྀི꒱ა")
+    else:
+        print(f"♡⸝⸝ ¡El {c.rosita}equipo{c.reset} está {c.rosa}vacío{c.reset}! {c.rosita}₍ᐢ. .ᐢ₎ ₊˚⊹♡{c.reset}")
     input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
 
 def enviar_centropokemon():
