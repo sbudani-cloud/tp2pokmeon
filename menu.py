@@ -317,7 +317,7 @@ def cambiar_equipo(): #decorar
             print(f"{c.rosa}{cont}-{c.reset} {e.nombre}")
             cont += 1
         try:
-            selec = int(input("\n¿A qué pokemon querés cambiar?: ")) 
+            selec = int(input(f"\n(˵◝ ⩊  ◜˵マ ¿A qué {c.rosita}pokemon{c.reset} querés {c.rosa}cambiar{c.reset}?: ")) 
         except ValueError:
             print(f"{c.rosita}Opción no válida. {c.rosa}₍^. .^₎Ⳋ{c.reset}")
             input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
@@ -335,7 +335,7 @@ def cambiar_equipo(): #decorar
                 actual = actual.siguiente
                 i += 1
             try:
-                selec_pc = int(input("\n¿A qué pokemon querés poner en tu equipo?"))
+                selec_pc = int(input(f"\n✧˖°. (๑>◡<๑) ¿A qué {c.rosita}pokemon{c.reset} querés poner en tu {c.rosa}equipo{c.reset}?: "))
             except ValueError:
                 print(f"{c.rosita}Opción no válida. {c.rosa}₍^. .^₎Ⳋ{c.reset}")
                 input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
@@ -345,9 +345,9 @@ def cambiar_equipo(): #decorar
                 equipo.pop(sacar)
                 equipo.append(temp[selec_pc-1])
                 PC.eliminar(temp[selec_pc-1])
-                print("¡Cambio realizado con éxito!")
+                print(f"₊˚⊹♡ ¡{c.rosita}Cambio{c.reset} realizado con {c.rosa}éxito{c.reset}! ◝(ᵔᗜᵔ)◜")
             else:
-                print(f"¡Elección fuera de {c.rosa}rango{c.reset}!. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
+                print(f"{c.rosita}𝜗ৎ{c.reset} ¡Elección fuera de {c.rosa}rango{c.reset}!. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
         else:
-            print(f"¡Elección fuera de {c.rosa}rango{c.reset}!. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
+            print(f"{c.rosita}𝜗ৎ{c.reset} ¡Elección fuera de {c.rosa}rango{c.reset}!. ˚. ꉂ(˵˃ ᗜ ˂˵) ᵎᵎ")
     input(f"\n{c.rosita}𓏵‧₊˚ ┊{c.reset} Presione {c.rosa}Enter{c.reset} para volver al menu.")
